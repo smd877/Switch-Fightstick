@@ -55,6 +55,7 @@
 // Type Defines
 // Enumeration for joystick buttons.
 typedef enum {
+	SWITCH_RELEASE = 0x00,
 	SWITCH_Y       = 0x01,
 	SWITCH_B       = 0x02,
 	SWITCH_A       = 0x04,
@@ -70,6 +71,23 @@ typedef enum {
 	SWITCH_HOME    = 0x1000,
 	SWITCH_CAPTURE = 0x2000,
 } JoystickButtons_t;
+
+// Enumeration for joystick hat switches.
+typedef enum {
+	HAT_TOP,
+	HAT_TOP_RIGHT,
+	HAT_RIGHT,
+	HAT_BOTTOM_RIGHT,
+	HAT_BOTTOM,
+	HAT_BOTTOM_LEFT,
+	HAT_LEFT,
+	HAT_TOP_LEFT,
+	HAT_CENTER,
+} JoystickHatSwitches_t;
+
+#define STICK_MIN		0
+#define STICK_CENTER	128
+#define STICK_MAX		255
 
 // Joystick HID report structure. We have an input and an output.
 typedef struct {
