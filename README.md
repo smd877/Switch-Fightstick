@@ -1,19 +1,58 @@
-## Switch-Fightstick
-Proof-of-Concept Fightstick for the Nintendo Switch. Uses the LUFA library and reverse-engineering of the Pokken Tournament Pro Pad for the Wii U to enable custom fightsticks on the Switch System v3.0.0.
+# Auto-Pokemon-Breeder (forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fightstick))
 
-### Wait, what?
-On June 20, 2017, Nintendo released System Update v3.0.0 for the Nintendo Switch. Along with a number of additional features that were advertised or noted in the changelog, additional hidden features were added. One of those features allows for the use of compatible controllers, such as the Pokken Tournament Pro Pad, to be used on the Nintendo Switch.
+[English](./README.md) / [日本語](./README_ja.md)
 
-Unlike the Wii U, which handles these controllers on a 'per-game' basis, the Switch treats the Pokken controller as if it was a Switch Pro Controller. Along with having the icon for the Pro Controller, it functions just like it in terms of using it in other games, apart from the lack of physical controls such as analog sticks, the buttons for the stick clicks, or other system buttons such as Home or Capture.
+This tool supports Pokemon selection.  
+A total of 30 eggs can be hatched automatically.
 
-### But games like ARMS use the analog sticks!
-The Pokken Tournament Pro Pad was made by HORI, who also makes controllers for other consoles; because of this, the descriptors provided to Nintendo for the Pokken controller are **very** similar to that of some third-party PS3 controllers. In fact, the Pokken Tournament Pro Pad -can- be used on the PS3 without anything special needing to be done. The original descriptors feature 13 buttons, two analog sticks, a HAT switch, and some vendor-specific items that we can safely ignore. Compare this to a PS3 controller, which has...13 buttons (4 Face, 4 Shoulders, 2 Sticks, Select/Start, and PS), two analog sticks, and a HAT switch (the D-Pad). 
+## Requirements
 
-### What do you mean by 'original descriptors?'
-Turns out we can modify the descriptors to expose up to 16 buttons at **least**. The Switch Pro Controller has 14 buttons on it, and as it turns out, the modified set of descriptors does allow us to enable the use of the most important button:
+### Hardware/Software
 
-### Is it the Captu-
+- Arduino UNO R3 or see [shinyquagsire23/Switch-Fightstick's README](https://github.com/shinyquagsire23/Switch-Fightstick/blob/master/README.md)
+- USB micro-b cable
+- Nintendo Switch
+- Pokemon Sword and Pokemon Shield
 
-# THE CAPTURE BUTTON
+### Item/Pokemon
 
-The Switch Pro Controller also exposes **additional** buttons within its descriptors; however, it's unknown as to what those do at this time. These come immediately after the HAT, so I'm under the assumption that they may be individual button presses instead of an angle. That being said, considering how flexible the Switch is with the Pokken controller descriptors, we may be able to mirror the Switch Pro Controller descriptors up to a certain point.
+- Rotom Bike
+- Oval Charm
+- Pokemon with "Flame Body" (Coalossal, Chandelure, etc.)
+
+## Build
+
+- Build Joystick.hex
+
+   ```
+   $ apt-get install git make gcc-avr avr-libc
+   $ git clone https://github.com/Almtr/Switch-Fightstick.git
+   $ cd Switch-Fightstick
+   $ git clone https://github.com/abcminiuser/lufa.git
+   $ make
+   ```
+
+- Write to Arduino UNO R3  
+  See [Updating the Atmega8U2 and 16U2 on an Uno or Mega2560 using DFU](https://www.arduino.cc/en/Hacking/DFUProgramming8U2)
+
+## Usage
+
+1. Move "POKEMON" menu icon to the upper left.
+1. Disconnect from the Internet
+1. Empty a pokemon box.
+1. Have Pokemon With "Flame Body" (and an egg).
+1. Go to Nurserie in Wild Area.
+1. Connect Arduino UNO R3 to your Nintendo Switch.
+
+## Demo
+
+[![](https://img.youtube.com/vi/oXnQt_Mbyzk/0.jpg)](https://www.youtube.com/watch?v=oXnQt_Mbyzk)
+
+## References
+
+- [GitHub - progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fightstick)
+- [GitHub - shinyquagsire23/Switch-Fightstick](https://github.com/shinyquagsire23/Switch-Fightstick)
+- [GitHub - bertrandom/snowball-thrower](https://github.com/bertrandom/snowball-thrower)
+- [GitHub - kidGodzilla/woff-grinder](https://github.com/kidGodzilla/woff-grinder)
+- [GitHub - ebith/Switch-Fightstick](https://github.com/ebith/Switch-Fightstick)
+- [Updating the Atmega8U2 and 16U2 on an Uno or Mega2560 using DFU](https://www.arduino.cc/en/Hacking/DFUProgramming8U2)
