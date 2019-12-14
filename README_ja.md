@@ -1,4 +1,5 @@
-# Auto-Pokemon-Breeder (forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fightstick))
+# Auto-Pokemon-Breeder
+Forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fightstick)
 
 [English](./README.md) / [日本語](./README_ja.md)
 
