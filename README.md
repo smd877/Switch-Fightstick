@@ -25,8 +25,8 @@ A total of 30 eggs can be hatched automatically.
 
 - Build Joystick.hex
 
-   ```
-   $ apt-get install git make gcc-avr avr-libc
+   ```sh
+   $ sudo apt-get install git make gcc-avr avr-libc
    $ git clone https://github.com/Almtr/Switch-Fightstick.git
    $ cd Switch-Fightstick
    $ git clone https://github.com/abcminiuser/lufa.git
@@ -39,15 +39,42 @@ A total of 30 eggs can be hatched automatically.
 ## Usage
 
 1. Move "POKEMON" menu icon to the upper left.
-1. Disconnect from the Internet
+1. Disconnect from the Internet.
 1. Empty a pokemon box.
-1. Have Pokemon With "Flame Body" (and an egg).
+1. Have a Pokemon With "Flame Body" (and an egg).
 1. Go to Nurserie in Wild Area.
 1. Connect Arduino UNO R3 to your Nintendo Switch.
 
 ## Demo
 
 [![](https://img.youtube.com/vi/oXnQt_Mbyzk/0.jpg)](https://www.youtube.com/watch?v=oXnQt_Mbyzk)
+
+## (Option) Other Modules
+
+### Loop Tournament Module
+
+  This is a module for automatically circling tournaments.  
+  Please compile with "loop-tournament" to use this module.
+
+  ```sh
+  $ make clean       # Run this command if Joystick.hex already exists.
+  $ make loop-tournament
+  ```
+  
+  Usage:  
+  1. Have a Pokemon with one move (e.g. Zacian who only learns "Iron Head").
+  1. Go to the reception of Shoot Stadium.
+  1. Connect Arduino UNO R3 to your Nintendo Switch.
+
+### Repeat A Module 
+
+  This is a module that repeatedly presses the A button.  
+  Please compile with "repeat-a" to use this module.
+
+  ```sh
+  $ make clean       # Run this command if Joystick.hex already exists.
+  $ make repeat-a
+  ```
 
 ## References
 

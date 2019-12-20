@@ -1,40 +1,13 @@
 #include "Joystick.h"
+#include "Modules.h"
 
-typedef enum {
-	SYNC_CONTROLLER,
-	RESET_POSITION_1,
-	HATCH_EGG,
-	RESET_POSITION_2,
-	GET_EGG,
-	PUT_POKEMON_IN_BOX,
-	DONE,
-} State_t;
-
-static State_t state = SYNC_CONTROLLER;
+static uint8_t state = SYNC_CONTROLLER;
 static uint16_t duration_count = 0;
 static uint16_t egg_count = 1;
 
-void SyncController(USB_JoystickReport_Input_t* const ReportData)
+uint8_t ResetPosition(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
 {
-	switch (duration_count) {
-	case 25:
-	case 50:
-		ReportData->Button |= SWITCH_L | SWITCH_R;
-		break;
-	case 75:
-	case 100:
-		ReportData->Button |= SWITCH_A;
-		break;
-	case 101:
-		duration_count = 0;
-		return;
-	}
-	duration_count++;
-}
-
-void ResetPosition(USB_JoystickReport_Input_t* const ReportData)
-{
-	switch (duration_count) {
+	switch (count) {
 	case 25 ... 49:
 		/* Open menu */
 		ReportData->Button |= SWITCH_X;
@@ -45,41 +18,39 @@ void ResetPosition(USB_JoystickReport_Input_t* const ReportData)
 		break;
 	case 250 ... 999:
 		/* Select current position */
-		if (duration_count % 50 < 25)
+		if (count % 50 < 25)
 			ReportData->Button |= SWITCH_A;
 		break;
 	case 1000:
-		duration_count = 0;
-		return;
+		return 1;
 	}
-	duration_count++;
+	return 0;
 }
 
-void HatchEgg(USB_JoystickReport_Input_t* const ReportData)
+uint8_t HatchEgg(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
 {
-	if (duration_count % 5 == 0)
+	if (count % 5 == 0)
 		ReportData->Button |= SWITCH_A;
 
-	switch (duration_count) {
+	switch (count) {
 	case 0 ... 200:
 		/* Move right */
 		ReportData->LX = STICK_MAX;
 		break;
 	case 18500:
-		duration_count = 0;
-		return;
+		return 1;
 	default:
 		/* Turn around */
 		ReportData->LX = STICK_MIN;
 		ReportData->RX = STICK_MAX;
 		break;
 	}
-	duration_count++;
+	return 0;
 }
 
-void PutPokemonInBox(USB_JoystickReport_Input_t* const ReportData)
+uint8_t PutPokemonInBox(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
 {
-	switch (duration_count) {
+	switch (count) {
 	case 25 ... 49:
 		/* Open menu */
 		ReportData->Button |= SWITCH_X;
@@ -90,17 +61,17 @@ void PutPokemonInBox(USB_JoystickReport_Input_t* const ReportData)
 		break;
 	case 300 ... 349:
 		/* Select pokemon menu */
-		if (duration_count % 50 < 25)
+		if (count % 50 < 25)
 			ReportData->Button |= SWITCH_A;
 		break;
 	case 500 ... 549:
 		/* Enter pokemon box */
-		if (duration_count % 50 < 25)
+		if (count % 50 < 25)
 			ReportData->Button |= SWITCH_R;
 		break;
 	case 700 ... 799:
 		/* Switch range mode */
-		if (duration_count % 50 < 25)
+		if (count % 50 < 25)
 			ReportData->Button |= SWITCH_Y;
 		break;
 	case 800 ... 824:
@@ -113,7 +84,7 @@ void PutPokemonInBox(USB_JoystickReport_Input_t* const ReportData)
 		break;
 	case 850 ... 899:
 		/* Select pokemon */
-		if (duration_count % 50 < 25)
+		if (count % 50 < 25)
 			ReportData->Button |= SWITCH_A;
 		break;
 	case 900 ... 999:
@@ -122,7 +93,7 @@ void PutPokemonInBox(USB_JoystickReport_Input_t* const ReportData)
 		break;
 	case 1000 ... 1049:
 		/* Grab pokemons */
-		if (duration_count % 50 < 25)
+		if (count % 50 < 25)
 			ReportData->Button |= SWITCH_A;
 		break;
 	case 1050 ... 1149:
@@ -134,24 +105,23 @@ void PutPokemonInBox(USB_JoystickReport_Input_t* const ReportData)
 		break;
 	case 1200 ... 1399:
 		/* Select box list and put pokemons in current box */
-		if (duration_count % 50 < 25)
+		if (count % 50 < 25)
 			ReportData->Button |= SWITCH_A;
 		break;
 	case 1400 ... 1799:
 		/* Cancel all */
-		if (duration_count % 50 < 25)
+		if (count % 50 < 25)
 			ReportData->Button |= SWITCH_B;
 		break;
 	case 1800:
-		duration_count = 0;
-		return;
+		return 1;
 	}
-	duration_count++;
+	return 0;
 }
 
-void GetEgg(USB_JoystickReport_Input_t* const ReportData)
+uint8_t GetEgg(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
 {
-	switch (duration_count) {
+	switch (count) {
 	case 0 ... 99:
 		/* Move to breeder */
 		ReportData->LY = STICK_MAX - 30;
@@ -162,44 +132,37 @@ void GetEgg(USB_JoystickReport_Input_t* const ReportData)
 		break;
 	case 150 ... 799:
 		/* Get egg */
-		if (duration_count % 50 < 25)
+		if (count % 50 < 25)
 			ReportData->Button |= SWITCH_A;
 		break;
 	case 800 ... 1399:
 		/* End a conversation */
-		if (duration_count % 50 < 25)
+		if (count % 50 < 25)
 			ReportData->Button |= SWITCH_B;
 		break;
 	case 1400:
-		duration_count = 0;
-		return;
+		return 1;
 	}
-	duration_count++;
+	return 0;
 }
 
-void GetNextReport(USB_JoystickReport_Input_t* const ReportData)
+void HatchEggs_Module(USB_JoystickReport_Input_t* const ReportData)
 {
-	ReportData->LX = STICK_CENTER;
-	ReportData->LY = STICK_CENTER;
-	ReportData->RX = STICK_CENTER;
-	ReportData->RY = STICK_CENTER;
-	ReportData->HAT = HAT_CENTER;
-	ReportData->Button = SWITCH_RELEASE;
-
 	switch (state) {
 	case SYNC_CONTROLLER:
-		SyncController(ReportData);
-		if (duration_count == 0)
+		if (SyncController(ReportData, duration_count)) {
 			state = RESET_POSITION_1;
+			duration_count = 0;
+		}
 		break;
 	case RESET_POSITION_1:
-		ResetPosition(ReportData);
-		if (duration_count == 0)
+		if (ResetPosition(ReportData, duration_count)) {
 			state = HATCH_EGG;
+			duration_count = 0;
+		}
 		break;
 	case HATCH_EGG:
-		HatchEgg(ReportData);
-		if (duration_count > 0)
+		if (!HatchEgg(ReportData, duration_count))
 			break;
 		if (egg_count % 5 == 0)
 			state = PUT_POKEMON_IN_BOX;
@@ -207,25 +170,29 @@ void GetNextReport(USB_JoystickReport_Input_t* const ReportData)
 			state = RESET_POSITION_2;
 		else
 			state = DONE;
+		duration_count = 0;
 		break;
 	case PUT_POKEMON_IN_BOX:
-		PutPokemonInBox(ReportData);
-		if (duration_count == 0)
+		if (PutPokemonInBox(ReportData, duration_count)) {
 			state = RESET_POSITION_2;
+			duration_count = 0;
+		}
 		break;
 	case RESET_POSITION_2:
-		ResetPosition(ReportData);
-		if (duration_count == 0)
+		if (ResetPosition(ReportData, duration_count)) {
 			state = GET_EGG;
+			duration_count = 0;
+		}
 		break;
 	case GET_EGG:
-		GetEgg(ReportData);
-		if (duration_count == 0) {
+		if (GetEgg(ReportData, duration_count)) {
 			state = RESET_POSITION_1;
+			duration_count = 0;
 			egg_count++;
 		}
 		break;
 	case DONE:
 		break;
 	}
+	duration_count++;
 }

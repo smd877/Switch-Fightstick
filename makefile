@@ -17,7 +17,8 @@ F_CPU        = 16000000
 F_USB        = $(F_CPU)
 OPTIMIZATION = s
 TARGET       = Joystick
-SRC          = $(TARGET).c Descriptors.c $(LUFA_SRC_USB) Macro.c
+MODULES      = Modules/CommonModule.c Modules/HatchEggs.c Modules/RepeatA.c Modules/LoopTournament.c
+SRC          = $(TARGET).c Descriptors.c $(LUFA_SRC_USB) $(MODULES)
 LUFA_PATH    = ./lufa/LUFA
 CC_FLAGS     = -DUSE_LUFA_CONFIG_HEADER -IConfig/
 LD_FLAGS     =
@@ -35,3 +36,11 @@ include $(LUFA_PATH)/Build/lufa_dfu.mk
 include $(LUFA_PATH)/Build/lufa_hid.mk
 include $(LUFA_PATH)/Build/lufa_avrdude.mk
 include $(LUFA_PATH)/Build/lufa_atprogram.mk
+
+# Repeat A Module
+repeat-a: all
+repeat-a: CC_FLAGS += -DREPEAT_A
+
+# Loop Tournament Module
+loop-tournament: all
+loop-tournament: CC_FLAGS += -DLOOP_TOURNAMENT

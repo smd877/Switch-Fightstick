@@ -25,8 +25,8 @@ Forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fights
 
 - Joystick.hex のビルド
 
-   ```
-   $ apt-get install git make gcc-avr avr-libc
+   ```sh
+   $ sudo apt-get install git make gcc-avr avr-libc
    $ git clone https://github.com/Almtr/Switch-Fightstick.git
    $ cd Switch-Fightstick
    $ git clone https://github.com/abcminiuser/lufa.git
@@ -48,6 +48,33 @@ Forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fights
 ## デモ
 
 [![](https://img.youtube.com/vi/oXnQt_Mbyzk/0.jpg)](https://www.youtube.com/watch?v=oXnQt_Mbyzk)
+
+## （オプション）その他モジュール
+
+### トーナメント周回用モジュール
+
+  トーナメントを自動で周回するためのモジュールです。  
+  このモジュールを使用するには、「loop-tournament」を指定してコンパイルしてください。
+
+  ```sh
+  $ make clean       # 既にJoystick.hexが存在する場合、このコマンドを実行してください。
+  $ make loop-tournament
+  ```
+  
+  使い方:  
+  1. 技を1つだけ覚えたポケモン1匹をてもちに入れてください（例：「アイアンヘッド」のみを覚えたザシアン）。
+  1. シュートスタジアムの受付前まで移動してください。
+  1. Arduino UNO R3 と Nintendo Switch を接続してください。
+
+### Aボタン連打用モジュール 
+
+  Aボタンを連打するモジュールです。  
+  このモジュールを使用するには、「repeat-a」を指定してコンパイルしてください。
+
+  ```sh
+  $ make clean       # 既にJoystick.hexが存在する場合、このコマンドを実行してください。
+  $ make repeat-a
+  ```
 
 ## 参考
 
