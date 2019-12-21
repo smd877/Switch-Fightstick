@@ -48,3 +48,7 @@ loop-tournament: CC_FLAGS += -DLOOP_TOURNAMENT
 # Release Pokemons Module
 release-pokemons: all
 release-pokemons: CC_FLAGS += -DRELEASE_POKEMONS
+
+# Loop Battle Tower Module
+loop-battle-tower: all
+loop-battle-tower: CC_FLAGS += -DLOOP_BATTLE_TOWER
