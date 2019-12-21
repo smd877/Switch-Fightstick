@@ -1,7 +1,6 @@
 #include "Joystick.h"
 #include "Modules.h"
 
-// static uint8_t state = SYNC_CONTROLLER;
 static uint16_t duration_count = 0;
 static uint8_t is_synced = 0;
 
