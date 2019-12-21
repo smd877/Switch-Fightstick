@@ -49,6 +49,10 @@ A total of 30 eggs can be hatched automatically.
 
 [![](https://img.youtube.com/vi/oXnQt_Mbyzk/0.jpg)](https://www.youtube.com/watch?v=oXnQt_Mbyzk)
 
+## Downloads
+
+Download binaries from https://github.com/Almtr/Switch-Fightstick/releases
+
 ## (Option) Other Modules
 
 ### Loop Tournament Module
