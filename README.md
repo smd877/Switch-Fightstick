@@ -65,6 +65,9 @@ A total of 30 eggs can be hatched automatically.
   1. Have a Pokemon with one move (e.g. Zacian who only learns "Iron Head").
   1. Go to the reception of Shoot Stadium.
   1. Connect Arduino UNO R3 to your Nintendo Switch.
+  
+  Reference:  
+  http://niwaka-syndrome.blog.jp/archives/20509394.html (Japanese)
 
 ### Release Pokemons Module 
 
@@ -99,3 +102,4 @@ A total of 30 eggs can be hatched automatically.
 - [GitHub - kidGodzilla/woff-grinder](https://github.com/kidGodzilla/woff-grinder)
 - [GitHub - ebith/Switch-Fightstick](https://github.com/ebith/Switch-Fightstick)
 - [Updating the Atmega8U2 and 16U2 on an Uno or Mega2560 using DFU](https://www.arduino.cc/en/Hacking/DFUProgramming8U2)
+- http://niwaka-syndrome.blog.jp/archives/20509394.html (Japanese)
