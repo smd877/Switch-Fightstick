@@ -53,7 +53,7 @@ A total of 30 eggs can be hatched automatically.
 
 ### Loop Tournament Module
 
-  This is a module for automatically circling tournaments.  
+  This is a module for automatically winning tournaments.  
   Please compile with "loop-tournament" to use this module.
 
   ```sh
@@ -68,6 +68,25 @@ A total of 30 eggs can be hatched automatically.
   
   Reference:  
   http://niwaka-syndrome.blog.jp/archives/20509394.html (Japanese)
+
+### Loop Battle Tower Module
+
+  This is a module for fighting automatically in the battle tower.  
+  Please compile with "loop-battle-tower" to use this module.
+
+  ```sh
+  $ make clean       # Run this command if Joystick.hex already exists.
+  $ make loop-battle-tower
+  ```
+
+  Usage:  
+  1. Rent a team for the battle tower (TEAM ID: 0000-0006-15Y4-3R).
+  1. Join the single battle with the team you rented.
+  1. Connect Arduino UNO R3 to your Nintendo Switch.
+
+  References:  
+  - https://twitter.com/satoon_sugar/status/1208248084653674496 (Japanese)
+  - https://twitter.com/satoon_sugar/status/1208253657470226432 (Japanese)
 
 ### Release Pokemons Module 
 
@@ -103,3 +122,5 @@ A total of 30 eggs can be hatched automatically.
 - [GitHub - ebith/Switch-Fightstick](https://github.com/ebith/Switch-Fightstick)
 - [Updating the Atmega8U2 and 16U2 on an Uno or Mega2560 using DFU](https://www.arduino.cc/en/Hacking/DFUProgramming8U2)
 - http://niwaka-syndrome.blog.jp/archives/20509394.html (Japanese)
+- https://twitter.com/satoon_sugar/status/1208248084653674496 (Japanese)
+- https://twitter.com/satoon_sugar/status/1208253657470226432 (Japanese)

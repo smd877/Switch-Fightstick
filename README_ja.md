@@ -69,6 +69,25 @@ Forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fights
   参考:  
   [【剣盾】トーナメント自動周回](http://niwaka-syndrome.blog.jp/archives/20509394.html)
 
+### バトルタワー周回用モジュール
+
+  バトルタワーを周回するためのモジュールです。  
+  このモジュールを使用するには、「loop-battle-tower」を指定してコンパイルしてください。
+
+  ```sh
+  $ make clean       # 既にJoystick.hexが存在する場合、このコマンドを実行してください。
+  $ make loop-battle-tower
+  ```
+
+  使い方:  
+  1. バトルタワー用のチームをレンタルしてください（チームID: 0000-0006-15Y4-3R）
+  1. レンタルしたチームでシングルバトルに参加してください。
+  1. Arduino UNO R3 と Nintendo Switch を接続してください。
+
+  参考:  
+  - [Twitter - sug@r@satoon_sugar: 1,000勝超えたのでメモ...](https://twitter.com/satoon_sugar/status/1208248084653674496)
+  - [Twitter - sug@r@satoon_sugar: 周回開始前に、使用するチームが選ばれるようにしておく。...](https://twitter.com/satoon_sugar/status/1208253657470226432)
+
 ### ポケモンリリース用モジュール 
 
   ポケモンを自動で逃がすためのモジュールです。  
@@ -103,3 +122,5 @@ Forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fights
 - [GitHub - ebith/Switch-Fightstick](https://github.com/ebith/Switch-Fightstick)
 - [Updating the Atmega8U2 and 16U2 on an Uno or Mega2560 using DFU](https://www.arduino.cc/en/Hacking/DFUProgramming8U2)
 - [【剣盾】トーナメント自動周回](http://niwaka-syndrome.blog.jp/archives/20509394.html)
+- [Twitter - sug@r@satoon_sugar: 1,000勝超えたのでメモ...](https://twitter.com/satoon_sugar/status/1208248084653674496)
+- [Twitter - sug@r@satoon_sugar: 周回開始前に、使用するチームが選ばれるようにしておく。...](https://twitter.com/satoon_sugar/status/1208253657470226432)
