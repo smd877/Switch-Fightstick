@@ -1,6 +1,14 @@
 #include "Joystick.h"
 #include "Modules.h"
 
+/*
+ * Commands:
+ *   Button: AA ... AAB
+ *   Stick:  Slightly Upper Right
+ * Reference:
+ *   http://niwaka-syndrome.blog.jp/archives/20509394.html
+ */
+
 static uint16_t duration_count = 0;
 
 void LoopTournament_Module(USB_JoystickReport_Input_t* const ReportData)
