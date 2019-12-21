@@ -68,7 +68,7 @@ Forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fights
 
 ### ポケモンリリース用モジュール 
 
-  ポケモンを自動で逃がすためのモジュールです。
+  ポケモンを自動で逃がすためのモジュールです。  
   このモジュールを使用するには、「release-pokemons」を指定してコンパイルしてください。
 
   ```sh
