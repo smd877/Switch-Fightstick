@@ -1,7 +1,16 @@
 #include "Joystick.h"
 #include "Modules.h"
 
-static uint8_t state = SYNC_CONTROLLER;
+typedef enum {
+	RESET_POSITION_1,
+	HATCH_EGG,
+	RESET_POSITION_2,
+	GET_EGG,
+	PUT_POKEMON_IN_BOX,
+	DONE,
+} State_t;
+
+static State_t state = RESET_POSITION_1;
 static uint16_t duration_count = 0;
 static uint16_t egg_count = 1;
 
@@ -149,12 +158,6 @@ uint8_t GetEgg(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
 void HatchEggs_Module(USB_JoystickReport_Input_t* const ReportData)
 {
 	switch (state) {
-	case SYNC_CONTROLLER:
-		if (SyncController(ReportData, duration_count)) {
-			state = RESET_POSITION_1;
-			duration_count = 0;
-		}
-		break;
 	case RESET_POSITION_1:
 		if (ResetPosition(ReportData, duration_count)) {
 			state = HATCH_EGG;

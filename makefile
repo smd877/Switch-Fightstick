@@ -17,7 +17,7 @@ F_CPU        = 16000000
 F_USB        = $(F_CPU)
 OPTIMIZATION = s
 TARGET       = Joystick
-MODULES      = Modules/CommonModule.c Modules/HatchEggs.c Modules/RepeatA.c Modules/LoopTournament.c
+MODULES      = $(wildcard Modules/*.c)
 SRC          = $(TARGET).c Descriptors.c $(LUFA_SRC_USB) $(MODULES)
 LUFA_PATH    = ./lufa/LUFA
 CC_FLAGS     = -DUSE_LUFA_CONFIG_HEADER -IConfig/
@@ -44,3 +44,6 @@ repeat-a: CC_FLAGS += -DREPEAT_A
 # Loop Tournament Module
 loop-tournament: all
 loop-tournament: CC_FLAGS += -DLOOP_TOURNAMENT
+
+remove-pokemons: all
+remove-pokemons: CC_FLAGS += -DREMOVE_POKEMONS

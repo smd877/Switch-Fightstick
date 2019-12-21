@@ -1,6 +1,10 @@
 #include "Joystick.h"
 #include "Modules.h"
 
+// static uint8_t state = SYNC_CONTROLLER;
+static uint16_t duration_count = 0;
+static uint8_t is_synced = 0;
+
 uint8_t SyncController(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
 {
 	switch (count) {
@@ -28,10 +32,19 @@ void GetNextReport(USB_JoystickReport_Input_t* const ReportData)
 	ReportData->HAT = HAT_CENTER;
 	ReportData->Button = SWITCH_RELEASE;
 
+	if (!is_synced) {
+		if (SyncController(ReportData, duration_count))
+			is_synced = 1;
+		duration_count++;
+		return;
+	}
+
 #if defined(LOOP_TOURNAMENT)
 	LoopTournament_Module(ReportData);
 #elif defined(REPEAT_A)
 	RepeatA_Module(ReportData);
+#elif defined(REMOVE_POKEMONS)
+	RemovePokemons_Module(ReportData);
 #else
 	HatchEggs_Module(ReportData);
 #endif
