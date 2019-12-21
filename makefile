@@ -45,5 +45,6 @@ repeat-a: CC_FLAGS += -DREPEAT_A
 loop-tournament: all
 loop-tournament: CC_FLAGS += -DLOOP_TOURNAMENT
 
-remove-pokemons: all
-remove-pokemons: CC_FLAGS += -DREMOVE_POKEMONS
+# Release Pokemons Module
+release-pokemons: all
+release-pokemons: CC_FLAGS += -DRELEASE_POKEMONS

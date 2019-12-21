@@ -66,6 +66,21 @@ A total of 30 eggs can be hatched automatically.
   1. Go to the reception of Shoot Stadium.
   1. Connect Arduino UNO R3 to your Nintendo Switch.
 
+### Release Pokemons Module 
+
+  This is a module that automatically releases Pokemons.  
+  Please compile with "release-pokemons" to use this module.
+
+  ```sh
+  $ make clean       # Run this command if Joystick.hex already exists.
+  $ make release-pokemons
+  ```
+  
+  Usage:  
+  1. Open the box with 30 Pokemons you want to release.
+  1. Press the B button repeatedly to close everything.
+  1. Connect Arduino UNO R3 to your Nintendo Switch.
+
 ### Repeat A Module 
 
   This is a module that repeatedly presses the A button.  

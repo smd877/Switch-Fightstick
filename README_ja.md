@@ -66,6 +66,21 @@ Forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fights
   1. シュートスタジアムの受付前まで移動してください。
   1. Arduino UNO R3 と Nintendo Switch を接続してください。
 
+### Release Pokemons Module 
+
+  ポケモンを自動で逃がすためのモジュールです。
+  このモジュールを使用するには、「release-pokemons」を指定してコンパイルしてください。
+
+  ```sh
+  $ make clean       # 既にJoystick.hexが存在する場合、このコマンドを実行してください。
+  $ make release-pokemons
+  ```
+  
+  使い方:  
+  1. 逃がしたいポケモン30匹が入ったボックスを開いてください。
+  1. Bボタンを連打して、すべて閉じてください。
+  1. Arduino UNO R3 と Nintendo Switch を接続してください。
+
 ### Aボタン連打用モジュール 
 
   Aボタンを連打するモジュールです。  

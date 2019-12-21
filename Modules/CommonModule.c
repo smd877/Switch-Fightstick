@@ -43,8 +43,8 @@ void GetNextReport(USB_JoystickReport_Input_t* const ReportData)
 	LoopTournament_Module(ReportData);
 #elif defined(REPEAT_A)
 	RepeatA_Module(ReportData);
-#elif defined(REMOVE_POKEMONS)
-	RemovePokemons_Module(ReportData);
+#elif defined(RELEASE_POKEMONS)
+	ReleasePokemons_Module(ReportData);
 #else
 	HatchEggs_Module(ReportData);
 #endif
