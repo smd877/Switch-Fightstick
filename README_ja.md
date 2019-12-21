@@ -66,7 +66,7 @@ Forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fights
   1. シュートスタジアムの受付前まで移動してください。
   1. Arduino UNO R3 と Nintendo Switch を接続してください。
 
-### Release Pokemons Module 
+### ポケモンリリース用モジュール 
 
   ポケモンを自動で逃がすためのモジュールです。
   このモジュールを使用するには、「release-pokemons」を指定してコンパイルしてください。
