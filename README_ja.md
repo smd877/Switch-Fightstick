@@ -49,6 +49,10 @@ Forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fights
 
 [![](https://img.youtube.com/vi/oXnQt_Mbyzk/0.jpg)](https://www.youtube.com/watch?v=oXnQt_Mbyzk)
 
+## ダウンロード
+
+https://github.com/Almtr/Switch-Fightstick/releases からダウンロードしてください。
+
 ## （オプション）その他モジュール
 
 ### トーナメント周回用モジュール
