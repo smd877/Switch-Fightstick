@@ -65,6 +65,9 @@ Forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fights
   1. 技を1つだけ覚えたポケモン1匹をてもちに入れてください（例：「アイアンヘッド」のみを覚えたザシアン）。
   1. シュートスタジアムの受付前まで移動してください。
   1. Arduino UNO R3 と Nintendo Switch を接続してください。
+  
+  参考:  
+  [【剣盾】トーナメント自動周回](http://niwaka-syndrome.blog.jp/archives/20509394.html)
 
 ### ポケモンリリース用モジュール 
 
@@ -99,3 +102,4 @@ Forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fights
 - [GitHub - kidGodzilla/woff-grinder](https://github.com/kidGodzilla/woff-grinder)
 - [GitHub - ebith/Switch-Fightstick](https://github.com/ebith/Switch-Fightstick)
 - [Updating the Atmega8U2 and 16U2 on an Uno or Mega2560 using DFU](https://www.arduino.cc/en/Hacking/DFUProgramming8U2)
+- [【剣盾】トーナメント自動周回](http://niwaka-syndrome.blog.jp/archives/20509394.html)
