@@ -47,7 +47,8 @@ Forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fights
 
 ## デモ
 
-[![](https://img.youtube.com/vi/oXnQt_Mbyzk/0.jpg)](https://www.youtube.com/watch?v=oXnQt_Mbyzk)
+[![](https://img.youtube.com/vi/oXnQt_Mbyzk/0.jpg)](https://www.youtube.com/watch?v=oXnQt_Mbyzk)  
+https://www.youtube.com/watch?v=oXnQt_Mbyzk
 
 ## ダウンロード
 
