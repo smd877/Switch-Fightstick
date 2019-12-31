@@ -11,7 +11,7 @@ A total of 30 eggs can be hatched automatically.
 ### Hardware/Software
 
 - Arduino UNO R3 or see [shinyquagsire23/Switch-Fightstick's README](https://github.com/shinyquagsire23/Switch-Fightstick/blob/master/README.md)
-- USB micro-b cable
+- USB Cable A-B
 - Nintendo Switch
 - Pokemon Sword and Pokemon Shield
 
