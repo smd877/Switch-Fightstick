@@ -11,7 +11,7 @@ Forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fights
 ### ハードウェア/ソフトウェア
 
 - Arduino UNO R3 もしくは [shinyquagsire23/Switch-Fightstick's README](https://github.com/shinyquagsire23/Switch-Fightstick/blob/master/README.md) を参考にしてください。
-- USB micro-b ケーブル
+- USBケーブル A-B
 - Nintendo Switch
 - ポケットモンスター ソード・シールド
 
