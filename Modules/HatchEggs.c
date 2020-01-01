@@ -14,7 +14,7 @@ static State_t state = RESET_POSITION_1;
 static uint16_t duration_count = 0;
 static uint16_t egg_count = 1;
 
-uint8_t ResetPosition(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
+static uint8_t ResetPosition(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
 {
 	switch (count) {
 	case 25 ... 49:
@@ -36,7 +36,7 @@ uint8_t ResetPosition(USB_JoystickReport_Input_t* const ReportData, uint16_t cou
 	return 0;
 }
 
-uint8_t HatchEgg(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
+static uint8_t HatchEgg(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
 {
 	if (count % 5 == 0)
 		ReportData->Button |= SWITCH_A;
@@ -57,7 +57,7 @@ uint8_t HatchEgg(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
 	return 0;
 }
 
-uint8_t PutPokemonInBox(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
+static uint8_t PutPokemonInBox(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
 {
 	switch (count) {
 	case 25 ... 49:
@@ -128,7 +128,7 @@ uint8_t PutPokemonInBox(USB_JoystickReport_Input_t* const ReportData, uint16_t c
 	return 0;
 }
 
-uint8_t GetEgg(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
+static uint8_t GetEgg(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
 {
 	switch (count) {
 	case 0 ... 99:

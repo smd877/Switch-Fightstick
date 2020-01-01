@@ -12,7 +12,7 @@ static State_t state = OPEN_POKEMON_BOX;
 static uint16_t duration_count = 0;
 static uint8_t release_count = 0;
 
-uint8_t OpenPokemonBox(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
+static uint8_t OpenPokemonBox(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
 {
 	switch (count) {
 	case 25 ... 49:
@@ -39,7 +39,7 @@ uint8_t OpenPokemonBox(USB_JoystickReport_Input_t* const ReportData, uint16_t co
 	return 0;
 }
 
-uint8_t ReleasePokemon(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
+static uint8_t ReleasePokemon(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
 {
 	switch (count) {
 	case 0 ... 49:
@@ -73,7 +73,7 @@ uint8_t ReleasePokemon(USB_JoystickReport_Input_t* const ReportData, uint16_t co
 	return 0;
 }
 
-uint8_t SelectOtherPokemon(USB_JoystickReport_Input_t* const ReportData, uint16_t count, uint8_t release_num)
+static uint8_t SelectOtherPokemon(USB_JoystickReport_Input_t* const ReportData, uint16_t count, uint8_t release_num)
 {
 	switch (count) {
 	case 0 ... 49:

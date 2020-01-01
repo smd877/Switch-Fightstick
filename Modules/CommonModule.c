@@ -4,7 +4,7 @@
 static uint16_t duration_count = 0;
 static uint8_t is_synced = 0;
 
-uint8_t SyncController(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
+static uint8_t SyncController(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
 {
 	switch (count) {
 	case 25:
