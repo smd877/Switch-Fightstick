@@ -1,6 +1,3 @@
-#include "Joystick.h"
-#include "Modules.h"
-
 /*
  * Commands:
  *   Button: AA ... AAB
@@ -8,6 +5,9 @@
  * Reference:
  *   http://niwaka-syndrome.blog.jp/archives/20509394.html
  */
+
+#include "Joystick.h"
+#include "Modules.h"
 
 static uint16_t duration_count = 0;
 
