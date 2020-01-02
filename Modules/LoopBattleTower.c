@@ -1,6 +1,6 @@
 /*
  * Commands:
- *   AA (wait 17sec) AA UP AA UP AAA (wait 17sec) AABB UP
+ *   AA (wait 17sec) AA UP AA UP AAA (wait 17sec) AABB (wait 0.8sec) UP
  * Rental Team ID:
  *   0000-0006-15Y4-3R
  * References:
@@ -63,11 +63,14 @@ void LoopBattleTower_Module(USB_JoystickReport_Input_t* const ReportData)
 			ReportData->Button |= SWITCH_B;
 		break;
 	case 5700 ... 5799:
+		/* wait 0.8sec */
+		break;
+	case 5800 ... 5899:
 		/* UP */
 		if (duration_count % 100 < 25)
 			ReportData->HAT = HAT_TOP;
 		break;
-	case 5800:
+	case 5900:
 		duration_count = 0;
 		return;
 	}
