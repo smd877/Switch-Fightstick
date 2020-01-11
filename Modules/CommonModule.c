@@ -7,15 +7,15 @@ static uint8_t is_synced = 0;
 static uint8_t SyncController(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
 {
 	switch (count) {
-	case 25:
-	case 50:
-		ReportData->Button |= SWITCH_L | SWITCH_R;
+	case 0 ... 49:
+		if (count % 50 < 25)
+			ReportData->Button |= SWITCH_L | SWITCH_R;
 		break;
-	case 75:
+	case 50 ... 99:
+		if (count % 50 < 25)
+			ReportData->Button |= SWITCH_A;
+		break;
 	case 100:
-		ReportData->Button |= SWITCH_A;
-		break;
-	case 101:
 		return 1;
 	}
 	return 0;

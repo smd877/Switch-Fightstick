@@ -40,9 +40,9 @@ include $(LUFA_PATH)/Build/lufa_atprogram.mk
 
 hatch-eggs:
 ifeq ($(BOX_NUMBER), 1)
-		$(MAKE) all
+	$(MAKE) all
 else
-		$(MAKE) TARGET=HatchEggs_$(BOX_NUMBER)_boxes APPEND_CC_FLAGS=-DBOX_NUMBER=$(BOX_NUMBER)
+	$(MAKE) TARGET=HatchEggs_$(BOX_NUMBER)_boxes APPEND_CC_FLAGS=-DBOX_NUMBER=$(BOX_NUMBER)
 endif
 loop-battle-tower:
 	$(MAKE) TARGET=LoopBattleTower	APPEND_CC_FLAGS=-DLOOP_BATTLE_TOWER
