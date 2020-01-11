@@ -51,7 +51,7 @@ loop-tournament:
 release-pokemons:
 	${MAKE} TARGET=ReleasePokemons	APPEND_CC_FLAGS=-DRELEASE_POKEMONS
 repeat-a:
-	${MAKE} TARGET=RepeatA			APPEND_CC_FLAGS=-DREPEAT_A
+	${MAKE} TARGET=RepeatA		APPEND_CC_FLAGS=-DREPEAT_A
 
 .PHONY: clean
 clean:
