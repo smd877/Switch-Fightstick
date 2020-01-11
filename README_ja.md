@@ -4,7 +4,7 @@ Forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fights
 [English](./README.md) / [日本語](./README_ja.md)
 
 ポケモン厳選をサポートするツールです。  
-全自動で30個の卵を孵化させることができます。
+全自動で卵を孵化させることができます。
 
 ## 要件
 
@@ -23,15 +23,32 @@ Forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fights
 
 ## ビルド方法
 
-- Joystick.hex のビルド
+- HatchEggs.hex のビルド
 
-   ```sh
-   $ sudo apt-get install git make gcc-avr avr-libc
-   $ git clone https://github.com/Almtr/Switch-Fightstick.git
-   $ cd Switch-Fightstick
-   $ git clone https://github.com/abcminiuser/lufa.git
-   $ make
-   ```
+  ```sh
+  $ sudo apt-get install git make gcc-avr avr-libc
+  $ git clone https://github.com/Almtr/Switch-Fightstick.git
+  $ cd Switch-Fightstick
+  $ git clone https://github.com/abcminiuser/lufa.git
+  ```
+
+  1ボックス（30匹のポケモン）分の卵を孵化させたい場合
+
+  ```sh
+  $ make
+  ```
+
+  3ボックス（90匹のポケモン）分の卵を孵化させたい場合
+
+  ```sh
+  $ make hatch-eggs BOX_NUMBER=3
+  ```
+
+  最大の32ボックス（960匹のポケモン）分の卵を孵化させたい場合
+
+  ```sh
+  $ make hatch-eggs BOX_NUMBER=32
+  ```
 
 - Arduino UNO R3 への書き込み  
   [Updating the Atmega8U2 and 16U2 on an Uno or Mega2560 using DFU](https://www.arduino.cc/en/Hacking/DFUProgramming8U2) を参考にしてください。
@@ -62,7 +79,7 @@ https://github.com/Almtr/Switch-Fightstick/releases からダウンロードし�
   このモジュールを使用するには、「loop-tournament」を指定してコンパイルしてください。
 
   ```sh
-  $ make clean       # 既にJoystick.hexが存在する場合、このコマンドを実行してください。
+  $ make clean       # 既に他のモジュールをコンパイルしていた場合は、このコマンドを実行してください。
   $ make loop-tournament
   ```
   
@@ -80,7 +97,7 @@ https://github.com/Almtr/Switch-Fightstick/releases からダウンロードし�
   このモジュールを使用するには、「loop-battle-tower」を指定してコンパイルしてください。
 
   ```sh
-  $ make clean       # 既にJoystick.hexが存在する場合、このコマンドを実行してください。
+  $ make clean       # 既に他のモジュールをコンパイルしていた場合は、このコマンドを実行してください。
   $ make loop-battle-tower
   ```
 
@@ -99,7 +116,7 @@ https://github.com/Almtr/Switch-Fightstick/releases からダウンロードし�
   このモジュールを使用するには、「release-pokemons」を指定してコンパイルしてください。
 
   ```sh
-  $ make clean       # 既にJoystick.hexが存在する場合、このコマンドを実行してください。
+  $ make clean       # 既に他のモジュールをコンパイルしていた場合は、このコマンドを実行してください。
   $ make release-pokemons
   ```
   
@@ -114,7 +131,7 @@ https://github.com/Almtr/Switch-Fightstick/releases からダウンロードし�
   このモジュールを使用するには、「repeat-a」を指定してコンパイルしてください。
 
   ```sh
-  $ make clean       # 既にJoystick.hexが存在する場合、このコマンドを実行してください。
+  $ make clean       # 既に他のモジュールをコンパイルしていた場合は、このコマンドを実行してください。
   $ make repeat-a
   ```
 

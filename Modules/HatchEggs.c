@@ -1,11 +1,21 @@
 #include "Joystick.h"
 #include "Modules.h"
 
+#ifndef BOX_NUMBER
+	/* Default 1 box (30 pokemons) */
+	#define BOX_NUMBER 1
+#endif
+
+#define	MAX_EGG_COUNT		(BOX_NUMBER * 30)
+#define LIMIT_BOX_NUMBER	32
+#define LIMIT_EGG_COUNT		(LIMIT_BOX_NUMBER * 30)
+
 typedef enum {
 	RESET_POSITION_1,
 	HATCH_EGG,
 	RESET_POSITION_2,
 	GET_EGG,
+	OPEN_POKEMON_BOX,
 	PUT_POKEMON_IN_BOX,
 	DONE,
 } State_t;
@@ -61,7 +71,7 @@ static uint8_t HatchEgg(USB_JoystickReport_Input_t* const ReportData, uint16_t c
 	return 0;
 }
 
-static uint8_t PutPokemonInBox(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
+static uint8_t OpenPokemonBox(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
 {
 	switch (count) {
 	case 25 ... 49:
@@ -82,51 +92,65 @@ static uint8_t PutPokemonInBox(USB_JoystickReport_Input_t* const ReportData, uin
 		if (count % 50 < 25)
 			ReportData->Button |= SWITCH_R;
 		break;
-	case 700 ... 799:
+	case 700:
+		return 1;
+	}
+	return 0;
+}
+
+static uint8_t PutPokemonInBox(USB_JoystickReport_Input_t* const ReportData, uint16_t count, uint16_t eggs)
+{
+	switch (count) {
+	case 0 ... 49:
+		/* Move next box */
+		if ((eggs > 5) && (eggs % 30 == 5) && (count % 50 < 25))
+			ReportData->Button |= SWITCH_R;
+		break;
+	case 50 ... 149:
 		/* Switch range mode */
 		if (count % 50 < 25)
 			ReportData->Button |= SWITCH_Y;
 		break;
-	case 800 ... 824:
+	case 150 ... 174:
 		/* Move party area */
 		ReportData->HAT = HAT_LEFT;
 		break;
-	case 825 ... 849:
+	case 175 ... 199:
 		/* Move to second pokemon position */
 		ReportData->HAT = HAT_BOTTOM;
 		break;
-	case 850 ... 899:
+	case 200 ... 249:
 		/* Select pokemon */
 		if (count % 50 < 25)
 			ReportData->Button |= SWITCH_A;
 		break;
-	case 900 ... 999:
+	case 250 ... 349:
 		/* Move last pokemon */
 		ReportData->HAT = HAT_BOTTOM;
 		break;
-	case 1000 ... 1049:
+	case 350 ... 399:
 		/* Grab pokemons */
 		if (count % 50 < 25)
 			ReportData->Button |= SWITCH_A;
 		break;
-	case 1050 ... 1149:
+	case 400 ... 499:
 		/* Move box list */
 		ReportData->HAT = HAT_BOTTOM;
 		break;
-	case 1150 ... 1174:
+	case 500 ... 524:
 		ReportData->HAT = HAT_RIGHT;
 		break;
-	case 1200 ... 1399:
+	case 550 ... 749:
 		/* Select box list and put pokemons in current box */
 		if (count % 50 < 25)
 			ReportData->Button |= SWITCH_A;
 		break;
-	case 1400 ... 1799:
+	case 750 ... 1249:
 		/* Cancel all */
 		if (count % 50 < 25)
 			ReportData->Button |= SWITCH_B;
 		break;
-	case 1800:
+	case 1250:
 		return 1;
 	}
 	return 0;
@@ -171,16 +195,22 @@ void HatchEggs_Module(USB_JoystickReport_Input_t* const ReportData)
 	case HATCH_EGG:
 		if (!HatchEgg(ReportData, duration_count))
 			break;
-		if (egg_count % 5 == 0)
-			state = PUT_POKEMON_IN_BOX;
-		else if (egg_count < 30)
-			state = RESET_POSITION_2;
-		else
+		if (egg_count == MAX_EGG_COUNT || egg_count == LIMIT_EGG_COUNT)
 			state = DONE;
+		else if (egg_count % 5 == 0)
+			state = OPEN_POKEMON_BOX;
+		else if (egg_count % 30 < 30)
+			state = RESET_POSITION_2;
 		duration_count = 0;
 		break;
+	case OPEN_POKEMON_BOX:
+		if (OpenPokemonBox(ReportData, duration_count)) {
+			state = PUT_POKEMON_IN_BOX;
+			duration_count = 0;
+		}
+		break;
 	case PUT_POKEMON_IN_BOX:
-		if (PutPokemonInBox(ReportData, duration_count)) {
+		if (PutPokemonInBox(ReportData, duration_count, egg_count)) {
 			state = RESET_POSITION_2;
 			duration_count = 0;
 		}

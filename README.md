@@ -4,7 +4,7 @@ Forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fights
 [English](./README.md) / [日本語](./README_ja.md)
 
 This tool supports Pokemon selection.  
-A total of 30 eggs can be hatched automatically.
+This tool can hatch eggs automatically.
 
 ## Requirements
 
@@ -23,15 +23,32 @@ A total of 30 eggs can be hatched automatically.
 
 ## Build
 
-- Build Joystick.hex
+- Build HatchEggs.hex
 
-   ```sh
-   $ sudo apt-get install git make gcc-avr avr-libc
-   $ git clone https://github.com/Almtr/Switch-Fightstick.git
-   $ cd Switch-Fightstick
-   $ git clone https://github.com/abcminiuser/lufa.git
-   $ make
-   ```
+  ```sh
+  $ sudo apt-get install git make gcc-avr avr-libc
+  $ git clone https://github.com/Almtr/Switch-Fightstick.git
+  $ cd Switch-Fightstick
+  $ git clone https://github.com/abcminiuser/lufa.git
+  ```
+
+  Hatch 1 box (30 pokemons) worth of eggs
+
+  ```sh
+  $ make
+  ```
+
+  Hatch 3 boxes (90 pokemons) worth of eggs
+
+  ```sh
+  $ make hatch-eggs BOX_NUMBER=3
+  ```
+
+  Hatch max 32 boxes (960 pokemons) worth of eggs
+
+  ```sh
+  $ make hatch-eggs BOX_NUMBER=32
+  ```
 
 - Write to Arduino UNO R3  
   See [Updating the Atmega8U2 and 16U2 on an Uno or Mega2560 using DFU](https://www.arduino.cc/en/Hacking/DFUProgramming8U2)
@@ -62,7 +79,7 @@ Download binaries from https://github.com/Almtr/Switch-Fightstick/releases
   Please compile with "loop-tournament" to use this module.
 
   ```sh
-  $ make clean       # Run this command if Joystick.hex already exists.
+  $ make clean       # If you have already compiled another module, run this command.
   $ make loop-tournament
   ```
   
@@ -80,7 +97,7 @@ Download binaries from https://github.com/Almtr/Switch-Fightstick/releases
   Please compile with "loop-battle-tower" to use this module.
 
   ```sh
-  $ make clean       # Run this command if Joystick.hex already exists.
+  $ make clean       # If you have already compiled another module, run this command.
   $ make loop-battle-tower
   ```
 
@@ -99,7 +116,7 @@ Download binaries from https://github.com/Almtr/Switch-Fightstick/releases
   Please compile with "release-pokemons" to use this module.
 
   ```sh
-  $ make clean       # Run this command if Joystick.hex already exists.
+  $ make clean       # If you have already compiled another module, run this command.
   $ make release-pokemons
   ```
   
@@ -114,7 +131,7 @@ Download binaries from https://github.com/Almtr/Switch-Fightstick/releases
   Please compile with "repeat-a" to use this module.
 
   ```sh
-  $ make clean       # Run this command if Joystick.hex already exists.
+  $ make clean       # If you have already compiled another module, run this command.
   $ make repeat-a
   ```
 
