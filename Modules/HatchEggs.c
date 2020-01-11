@@ -21,9 +21,13 @@ static uint8_t ResetPosition(USB_JoystickReport_Input_t* const ReportData, uint1
 		/* Open menu */
 		ReportData->Button |= SWITCH_X;
 		break;
-	case 50 ... 249:
-		/* Move to the leftmost position */
-		ReportData->HAT = HAT_BOTTOM_LEFT;
+	case 50 ... 224:
+		/* Move upper left */
+		ReportData->HAT = HAT_TOP_LEFT;
+		break;
+	case 225 ... 249:
+		/* Move bottom */
+		ReportData->HAT = HAT_BOTTOM;
 		break;
 	case 250 ... 999:
 		/* Select current position */
