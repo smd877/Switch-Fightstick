@@ -77,14 +77,30 @@ static uint8_t SelectOtherPokemon(USB_JoystickReport_Input_t* const ReportData, 
 {
 	switch (count) {
 	case 0 ... 49:
-		if (release_num % 6 == 0 && count % 50 < 25)
-			ReportData->HAT = HAT_BOTTOM;
-		else if (release_num % 12 < 6 && count % 50 < 25)
+		/* Release button */
+		if (count % 50 >= 25)
+			break;
+		/* select next pokemon */
+		if (release_num && release_num % 5 == 0)
 			ReportData->HAT = HAT_RIGHT;
-		else if (count % 50 < 25)
-			ReportData->HAT = HAT_LEFT;
+		else if (release_num % 10 < 5)
+			ReportData->HAT = HAT_BOTTOM;
+		else
+			ReportData->HAT = HAT_TOP;
 		break;
-	case 50:
+	case 50 ... 99:
+		if (release_num % 30 != 0)
+			return 1;
+		/* Reset position */
+		if (release_num && count % 50 < 25)
+			ReportData->HAT = HAT_RIGHT;
+		break;
+	case 100 ... 149:
+		/* Next box */
+		if (count % 50 < 25)
+			ReportData->Button |= SWITCH_R;
+		break;
+	case 200:
 		return 1;
 	}
 	return 0;
@@ -107,7 +123,7 @@ void ReleasePokemons_Module(USB_JoystickReport_Input_t* const ReportData)
 		}
 		break;
 	case SELECT_OTHER_POKEMON:
-		if (release_count == 30) {
+		if (release_count == MAX_EGG_COUNT || release_count == LIMIT_EGG_COUNT) {
 			state = DONE;
 		} else if (SelectOtherPokemon(ReportData, duration_count, release_count)) {
 			state = RELEASE_POKEMON;

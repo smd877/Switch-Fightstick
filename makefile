@@ -23,6 +23,7 @@ SRC          = Joystick.c Descriptors.c $(LUFA_SRC_USB) $(MODULES)
 LUFA_PATH    = ./lufa/LUFA
 CC_FLAGS     = -DUSE_LUFA_CONFIG_HEADER -IConfig/ ${APPEND_CC_FLAGS}
 LD_FLAGS     =
+BOX_NUMBER   = 1
 
 # Default target
 all:
@@ -49,9 +50,13 @@ loop-battle-tower:
 loop-tournament: 
 	$(MAKE) TARGET=LoopTournament	APPEND_CC_FLAGS=-DLOOP_TOURNAMENT
 release-pokemons:
-	${MAKE} TARGET=ReleasePokemons	APPEND_CC_FLAGS=-DRELEASE_POKEMONS
+ifeq ($(BOX_NUMBER), 1)
+	$(MAKE) TARGET=ReleasePokemons_1_box APPEND_CC_FLAGS=-DRELEASE_POKEMONS
+else
+	$(MAKE) TARGET=ReleasePokemons_$(BOX_NUMBER)_boxes APPEND_CC_FLAGS='-DRELEASE_POKEMONS -DBOX_NUMBER=$(BOX_NUMBER)'
+endif
 repeat-a:
-	${MAKE} TARGET=RepeatA		APPEND_CC_FLAGS=-DREPEAT_A
+	$(MAKE) TARGET=RepeatA		APPEND_CC_FLAGS=-DREPEAT_A
 
 .PHONY: clean
 clean:
