@@ -3,8 +3,7 @@ Forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fights
 
 [English](./README.md) / [日本語](./README_ja.md)
 
-This tool supports Pokemon selection.  
-This tool can hatch eggs automatically.
+These are automation tools to support Pokemon breeding.
 
 ## Requirements
 
@@ -32,19 +31,19 @@ This tool can hatch eggs automatically.
   $ git clone https://github.com/abcminiuser/lufa.git
   ```
 
-  Hatch 1 box (30 pokemons) worth of eggs
+  Hatch 1 box (30 pokemons) worth of eggs.
 
   ```sh
   $ make
   ```
 
-  Hatch 3 boxes (90 pokemons) worth of eggs
+  Hatch 3 boxes (90 pokemons) worth of eggs.
 
   ```sh
   $ make hatch-eggs BOX_NUMBER=3
   ```
 
-  Hatch max 32 boxes (960 pokemons) worth of eggs
+  Hatch max 32 boxes (960 pokemons) worth of eggs.
 
   ```sh
   $ make hatch-eggs BOX_NUMBER=32
@@ -78,52 +77,68 @@ Download binaries from https://github.com/Almtr/Switch-Fightstick/releases
   This is a module for automatically winning tournaments.  
   Please compile with "loop-tournament" to use this module.
 
-  ```sh
-  $ make clean       # If you have already compiled another module, run this command.
-  $ make loop-tournament
-  ```
+  - Build:    
+    ```sh
+    $ make clean       # If you have already compiled another module, run this command.
+    $ make loop-tournament
+    ```
   
-  Usage:  
-  1. Have a Pokemon with one move (e.g. Zacian who only learns "Iron Head").
-  1. Go to the reception of Shoot Stadium.
-  1. Connect Arduino UNO R3 to your Nintendo Switch.
+  - Usage:  
+    1. Have a Pokemon with one move (e.g. Zacian who only learns "Iron Head").
+    1. Go to the reception of Shoot Stadium.
+    1. Connect Arduino UNO R3 to your Nintendo Switch.
   
-  Reference:  
-  http://niwaka-syndrome.blog.jp/archives/20509394.html (Japanese)
+  - Reference:  
+    http://niwaka-syndrome.blog.jp/archives/20509394.html (Japanese)
 
 ### Loop Battle Tower Module
 
   This is a module for fighting automatically in the battle tower.  
   Please compile with "loop-battle-tower" to use this module.
 
-  ```sh
-  $ make clean       # If you have already compiled another module, run this command.
-  $ make loop-battle-tower
-  ```
+  - Build:  
+    ```sh
+    $ make clean       # If you have already compiled another module, run this command.
+    $ make loop-battle-tower
+    ```
 
-  Usage:  
-  1. Rent a team for the battle tower (TEAM ID: 0000-0006-15Y4-3R).
-  1. Join the single battle with the team you rented.
-  1. Connect Arduino UNO R3 to your Nintendo Switch.
+  - Usage:  
+    1. Rent a team for the battle tower (TEAM ID: 0000-0006-15Y4-3R).
+    1. Join the single battle with the team you rented.
+    1. Connect Arduino UNO R3 to your Nintendo Switch.
 
-  References:  
-  - https://twitter.com/satoon_sugar/status/1208248084653674496 (Japanese)
-  - https://twitter.com/satoon_sugar/status/1208253657470226432 (Japanese)
+  - References:  
+    - https://twitter.com/satoon_sugar/status/1208248084653674496 (Japanese)
+    - https://twitter.com/satoon_sugar/status/1208253657470226432 (Japanese)
 
 ### Release Pokemons Module 
 
   This is a module that automatically releases Pokemons.  
   Please compile with "release-pokemons" to use this module.
 
-  ```sh
-  $ make clean       # If you have already compiled another module, run this command.
-  $ make release-pokemons
-  ```
+  - Build:  
+    Release 1 box (30 pokemons) worth of pokemons.
+    ```sh
+    $ make clean       # If you have already compiled another module, run this command.
+    $ make release-pokemons
+    ```
+
+    Release 3 boxes (90 pokemons) worth of pokemons.
+    ```sh
+    $ make clean       # If you have already compiled another module, run this command.
+    $ make release-pokemons BOX_NUMBER=3
+    ```
+
+    Release max 32 boxes (960 pokemons) worth of pokemons.
+    ```sh
+    $ make clean       # If you have already compiled another module, run this command.
+    $ make release-pokemons BOX_NUMBER=32
+    ```
   
-  Usage:  
-  1. Open the box with 30 Pokemons you want to release.
-  1. Press the B button repeatedly to close everything.
-  1. Connect Arduino UNO R3 to your Nintendo Switch.
+  - Usage:  
+    1. Open the box with 30 Pokemons you want to release.
+    1. Press the B button repeatedly to close everything.
+    1. Connect Arduino UNO R3 to your Nintendo Switch.
 
 ### Repeat A Module 
 

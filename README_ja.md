@@ -3,8 +3,7 @@ Forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fights
 
 [English](./README.md) / [日本語](./README_ja.md)
 
-ポケモン厳選をサポートするツールです。  
-全自動で卵を孵化させることができます。
+ポケモンの育成をサポートする自動化ツール群です。
 
 ## 要件
 
@@ -78,52 +77,71 @@ https://github.com/Almtr/Switch-Fightstick/releases からダウンロードし�
   トーナメントを自動で周回するためのモジュールです。  
   このモジュールを使用するには、「loop-tournament」を指定してコンパイルしてください。
 
-  ```sh
-  $ make clean       # 既に他のモジュールをコンパイルしていた場合は、このコマンドを実行してください。
-  $ make loop-tournament
-  ```
+  - ビルド方法:  
+    ```sh
+    $ make clean       # 既に他のモジュールをコンパイルしていた場合は、このコマンドを実行してください。
+    $ make loop-tournament
+    ```
   
-  使い方:  
-  1. 技を1つだけ覚えたポケモン1匹をてもちに入れてください（例：「アイアンヘッド」のみを覚えたザシアン）。
-  1. シュートスタジアムの受付前まで移動してください。
-  1. Arduino UNO R3 と Nintendo Switch を接続してください。
+  - 使い方:  
+    1. 技を1つだけ覚えたポケモン1匹をてもちに入れてください（例：「アイアンヘッド」のみを覚えたザシアン）。
+    1. シュートスタジアムの受付前まで移動してください。
+    1. Arduino UNO R3 と Nintendo Switch を接続してください。
   
-  参考:  
-  [【剣盾】トーナメント自動周回](http://niwaka-syndrome.blog.jp/archives/20509394.html)
+  - 参考:  
+    [【剣盾】トーナメント自動周回](http://niwaka-syndrome.blog.jp/archives/20509394.html)
 
 ### バトルタワー周回用モジュール
 
   バトルタワーを周回するためのモジュールです。  
   このモジュールを使用するには、「loop-battle-tower」を指定してコンパイルしてください。
 
-  ```sh
-  $ make clean       # 既に他のモジュールをコンパイルしていた場合は、このコマンドを実行してください。
-  $ make loop-battle-tower
-  ```
+  - ビルド方法:  
+    ```sh
+    $ make clean       # 既に他のモジュールをコンパイルしていた場合は、このコマンドを実行してください。
+    $ make loop-battle-tower
+    ```
 
-  使い方:  
-  1. バトルタワー用のチームをレンタルしてください（チームID: 0000-0006-15Y4-3R）
-  1. レンタルしたチームでシングルバトルに参加してください。
-  1. Arduino UNO R3 と Nintendo Switch を接続してください。
+  - 使い方:  
+    1. バトルタワー用のチームをレンタルしてください（チームID: 0000-0006-15Y4-3R）
+    1. レンタルしたチームでシングルバトルに参加してください。
+    1. Arduino UNO R3 と Nintendo Switch を接続してください。
 
-  参考:  
-  - [Twitter - sug@r@satoon_sugar: 1,000勝超えたのでメモ...](https://twitter.com/satoon_sugar/status/1208248084653674496)
-  - [Twitter - sug@r@satoon_sugar: 周回開始前に、使用するチームが選ばれるようにしておく。...](https://twitter.com/satoon_sugar/status/1208253657470226432)
+  - 参考:  
+    - [Twitter - sug@r@satoon_sugar: 1,000勝超えたのでメモ...](https://twitter.com/satoon_sugar/status/1208248084653674496)
+    - [Twitter - sug@r@satoon_sugar: 周回開始前に、使用するチームが選ばれるようにしておく。...](https://twitter.com/satoon_sugar/status/1208253657470226432)
 
 ### ポケモンリリース用モジュール 
 
   ポケモンを自動で逃がすためのモジュールです。  
   このモジュールを使用するには、「release-pokemons」を指定してコンパイルしてください。
 
-  ```sh
-  $ make clean       # 既に他のモジュールをコンパイルしていた場合は、このコマンドを実行してください。
-  $ make release-pokemons
-  ```
+  - ビルド方法:  
+    1ボックス（30匹のポケモン）分のポケモンを逃がしたい場合
+
+    ```sh
+    $ make clean       # 既に他のモジュールをコンパイルしていた場合は、このコマンドを実行してください。
+    $ make release-pokemons
+    ```
+
+    3ボックス（90匹のポケモン）分のポケモンを逃がしたい場合
+
+    ```sh
+    $ make clean       # 既に他のモジュールをコンパイルしていた場合は、このコマンドを実行してください。
+    $ make release-pokemons BOX_NUMBER=3
+    ```
+
+    最大の32ボックス（960匹のポケモン）分のポケモンを逃がしたい場合
+
+    ```sh
+    $ make clean       # 既に他のモジュールをコンパイルしていた場合は、このコマンドを実行してください。
+    $ make release-pokemons BOX_NUMBER=32
+    ```
   
-  使い方:  
-  1. 逃がしたいポケモン30匹が入ったボックスを開いてください。
-  1. Bボタンを連打して、すべて閉じてください。
-  1. Arduino UNO R3 と Nintendo Switch を接続してください。
+  - 使い方:  
+    1. 逃がしたいポケモン30匹が入ったボックスを開いてください。
+    1. Bボタンを連打して、すべて閉じてください。
+    1. Arduino UNO R3 と Nintendo Switch を接続してください。
 
 ### Aボタン連打用モジュール 
 
