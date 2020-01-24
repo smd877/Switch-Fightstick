@@ -15,9 +15,10 @@ static uint8_t release_count = 0;
 static uint8_t OpenPokemonBox(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
 {
 	switch (count) {
-	case 25 ... 49:
+	case 0 ... 49:
 		/* Open menu */
-		ReportData->Button |= SWITCH_X;
+		if (count % 50 < 25)
+			ReportData->Button |= SWITCH_X;
 		break;
 	case 50 ... 249:
 		/* Move pokemon menu */
@@ -76,10 +77,7 @@ static uint8_t ReleasePokemon(USB_JoystickReport_Input_t* const ReportData, uint
 static uint8_t SelectOtherPokemon(USB_JoystickReport_Input_t* const ReportData, uint16_t count, uint8_t release_num)
 {
 	switch (count) {
-	case 0 ... 49:
-		/* Release button */
-		if (count % 50 >= 25)
-			break;
+	case 0 ... 24:
 		/* select next pokemon */
 		if (release_num && release_num % 5 == 0)
 			ReportData->HAT = HAT_RIGHT;

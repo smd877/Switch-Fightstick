@@ -45,16 +45,18 @@ ifeq ($(BOX_NUMBER), 1)
 else
 	$(MAKE) TARGET=HatchEggs_$(BOX_NUMBER)_boxes APPEND_CC_FLAGS=-DBOX_NUMBER=$(BOX_NUMBER)
 endif
-loop-battle-tower:
-	$(MAKE) TARGET=LoopBattleTower	APPEND_CC_FLAGS=-DLOOP_BATTLE_TOWER
-loop-tournament: 
-	$(MAKE) TARGET=LoopTournament	APPEND_CC_FLAGS=-DLOOP_TOURNAMENT
+
 release-pokemons:
 ifeq ($(BOX_NUMBER), 1)
 	$(MAKE) TARGET=ReleasePokemons_1_box APPEND_CC_FLAGS=-DRELEASE_POKEMONS
 else
-	$(MAKE) TARGET=ReleasePokemons_$(BOX_NUMBER)_boxes APPEND_CC_FLAGS='-DRELEASE_POKEMONS -DBOX_NUMBER=$(BOX_NUMBER)'
+	$(MAKE) TARGET=ReleasePokemons_$(BOX_NUMBER)_boxes APPEND_CC_FLAGS="-DRELEASE_POKEMONS -DBOX_NUMBER=$(BOX_NUMBER)"
 endif
+
+loop-battle-tower:
+	$(MAKE) TARGET=LoopBattleTower	APPEND_CC_FLAGS=-DLOOP_BATTLE_TOWER
+loop-tournament:
+	$(MAKE) TARGET=LoopTournament	APPEND_CC_FLAGS=-DLOOP_TOURNAMENT
 repeat-a:
 	$(MAKE) TARGET=RepeatA		APPEND_CC_FLAGS=-DREPEAT_A
 

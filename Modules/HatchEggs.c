@@ -18,9 +18,10 @@ static uint16_t egg_count = 1;
 static uint8_t ResetPosition(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
 {
 	switch (count) {
-	case 25 ... 49:
+	case 0 ... 49:
 		/* Open menu */
-		ReportData->Button |= SWITCH_X;
+		if (count % 50 < 25)
+			ReportData->Button |= SWITCH_X;
 		break;
 	case 50 ... 224:
 		/* Move upper left */
@@ -52,6 +53,15 @@ static uint8_t HatchEgg(USB_JoystickReport_Input_t* const ReportData, uint16_t c
 		ReportData->LX = STICK_MAX;
 		break;
 	case 18500:
+		/*
+		 * 18500 counts(about 148 seconds) is adjusted based on the time until 
+		 * Dreepy's egg hatch.
+		 * 
+		 * Note:
+		 *   You can change this value to a smaller value to optimize for other
+		 *   Pokemon. However, setting too small this value may cause the player 
+		 *   to fail to receive the egg.
+		 */
 		return 1;
 	default:
 		/* Turn around */
