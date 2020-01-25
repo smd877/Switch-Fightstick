@@ -1,5 +1,5 @@
 # Auto-Pokemon-Breeder
-Forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fightstick)
+Forked from [Almtr/Switch-Fightstick](https://github.com/Almtr/Switch-Fightstick)
 
 [English](./README.md) / [日本語](./README_ja.md)
 
@@ -14,39 +14,27 @@ Forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fights
 - Nintendo Switch
 - ポケットモンスター ソード・シールド
 
-### どうぐ/ポケモン
-
-- ロトム自転車
-- まるいおまもり
-- 「ほのおのからだ」の特性を持つポケモン（セキタンザン、シャンデラなど）
-
 ## ビルド方法
 
-- HatchEggs.hex のビルド
+- MagicalTrade_1_box.hex のビルド
 
   ```sh
   $ sudo apt-get install git make gcc-avr avr-libc
-  $ git clone https://github.com/Almtr/Switch-Fightstick.git
+  $ git clone https://github.com/smd877/Switch-Fightstick
   $ cd Switch-Fightstick
   $ git clone https://github.com/abcminiuser/lufa.git
   ```
 
-  1ボックス（30匹のポケモン）分の卵を孵化させたい場合
+  1ボックス（30匹のポケモン）分マジカル交換したい場合
 
   ```sh
-  $ make
+  $ make magical-trade
   ```
 
-  3ボックス（90匹のポケモン）分の卵を孵化させたい場合
+  3ボックス（90匹のポケモン）分マジカル交換したい場合
 
   ```sh
-  $ make hatch-eggs BOX_NUMBER=3
-  ```
-
-  最大の32ボックス（960匹のポケモン）分の卵を孵化させたい場合
-
-  ```sh
-  $ make hatch-eggs BOX_NUMBER=32
+  $ make magical-trade BOX_NUMBER=3
   ```
 
 - Arduino UNO R3 への書き込み  
@@ -54,104 +42,41 @@ Forked from [progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fights
 
 ## 使い方
 
-1. メニューの「ポケモン」アイコンを左上に移動してください。 
-1. インターネットから切断してください。
-1. ボックスの中身を空にしてください。
-1. 「ほのおのからだ」の特性を持つポケモン（と1つのタマゴ）をてもちに入れてください。
-1. ワイルドエリアの預かり屋まで移動してください。
+1. 設定で「話の速さ」を速いにしてください。
+1. 設定で「ニックネーム登録」をしないにしてください。
+1. インターネットに接続してください。
+1. ボックスに空きがない(30匹が交換できる)状態にしてください。
+1. 図鑑が完成していることを前提に時間を組んでいます。(図鑑登録の時間を入れていません)※後述
+1. どこでもいいのでポケモンセンターの中に移動してください。
 1. Arduino UNO R3 と Nintendo Switch を接続してください。
 
-## デモ
+## 交換まで時間がかかる場合は
 
-[![](https://img.youtube.com/vi/oXnQt_Mbyzk/0.jpg)](https://www.youtube.com/watch?v=oXnQt_Mbyzk)  
-https://www.youtube.com/watch?v=oXnQt_Mbyzk
+  Module/MagicalTrade.c の 「TradeStart」メソッドの「case 4800」でおよそ交換開始後30秒程度で交換完了と判断して次の操作に移ります。
+  「case 4800」の4800を調整することで交換完了判断のタイミング変更ができます。
+
+## 図鑑がまだ完成していない場合は
+
+  Module/MagicalTrade.c の 「TradeFinish」メソッドの「case 2850」でおよそ交換完了後2,3秒程度で次の操作に移ります。
+  「case 1000 ... 1999」の1999と「case 2850」の2850を調整することで図鑑追加のアクションに対応できます。
 
 ## ダウンロード
 
-https://github.com/Almtr/Switch-Fightstick/releases からダウンロードしてください。
+https://github.com/smd877/Switch-Fightstick/releases からダウンロードしてください。
 
-## （オプション）その他モジュール
+## 他モジュールについて
 
-### トーナメント周回用モジュール
+Fork元を参照してください。
+https://github.com/Almtr/Switch-Fightstick
 
-  トーナメントを自動で周回するためのモジュールです。  
-  このモジュールを使用するには、「loop-tournament」を指定してコンパイルしてください。
+以下モジュールがあります。
 
-  - ビルド方法:  
-    ```sh
-    $ make clean       # 既に他のモジュールをコンパイルしていた場合は、このコマンドを実行してください。
-    $ make loop-tournament
-    ```
-  
-  - 使い方:  
-    1. 技を1つだけ覚えたポケモン1匹をてもちに入れてください（例：「アイアンヘッド」のみを覚えたザシアン）。
-    1. シュートスタジアムの受付前まで移動してください。
-    1. Arduino UNO R3 と Nintendo Switch を接続してください。
-  
-  - 参考:  
-    [【剣盾】トーナメント自動周回](http://niwaka-syndrome.blog.jp/archives/20509394.html)
-
-### バトルタワー周回用モジュール
-
-  バトルタワーを周回するためのモジュールです。  
-  このモジュールを使用するには、「loop-battle-tower」を指定してコンパイルしてください。
-
-  - ビルド方法:  
-    ```sh
-    $ make clean       # 既に他のモジュールをコンパイルしていた場合は、このコマンドを実行してください。
-    $ make loop-battle-tower
-    ```
-
-  - 使い方:  
-    1. バトルタワー用のチームをレンタルしてください（チームID: 0000-0006-15Y4-3R）
-    1. レンタルしたチームでシングルバトルに参加してください。
-    1. Arduino UNO R3 と Nintendo Switch を接続してください。
-
-  - 参考:  
-    - [Twitter - sug@r@satoon_sugar: 1,000勝超えたのでメモ...](https://twitter.com/satoon_sugar/status/1208248084653674496)
-    - [Twitter - sug@r@satoon_sugar: 周回開始前に、使用するチームが選ばれるようにしておく。...](https://twitter.com/satoon_sugar/status/1208253657470226432)
-
-### ポケモンリリース用モジュール 
-
-  ポケモンを自動で逃がすためのモジュールです。  
-  このモジュールを使用するには、「release-pokemons」を指定してコンパイルしてください。
-
-  - ビルド方法:  
-    1ボックス（30匹のポケモン）分のポケモンを逃がしたい場合
-
-    ```sh
-    $ make clean       # 既に他のモジュールをコンパイルしていた場合は、このコマンドを実行してください。
-    $ make release-pokemons
-    ```
-
-    3ボックス（90匹のポケモン）分のポケモンを逃がしたい場合
-
-    ```sh
-    $ make clean       # 既に他のモジュールをコンパイルしていた場合は、このコマンドを実行してください。
-    $ make release-pokemons BOX_NUMBER=3
-    ```
-
-    最大の32ボックス（960匹のポケモン）分のポケモンを逃がしたい場合
-
-    ```sh
-    $ make clean       # 既に他のモジュールをコンパイルしていた場合は、このコマンドを実行してください。
-    $ make release-pokemons BOX_NUMBER=32
-    ```
-  
-  - 使い方:  
-    1. 逃がしたいポケモン30匹が入ったボックスを開いてください。
-    1. Bボタンを連打して、すべて閉じてください。
-    1. Arduino UNO R3 と Nintendo Switch を接続してください。
-
-### Aボタン連打用モジュール 
-
-  Aボタンを連打するモジュールです。  
-  このモジュールを使用するには、「repeat-a」を指定してコンパイルしてください。
-
-  ```sh
-  $ make clean       # 既に他のモジュールをコンパイルしていた場合は、このコマンドを実行してください。
-  $ make repeat-a
-  ```
+- 卵孵化トーナメント周回用モジュール
+- トーナメント周回用モジュール
+- トーナメント周回用モジュール
+- バトルタワー周回用モジュール
+- ポケモンリリース用モジュール 
+- Aボタン連打用モジュール 
 
 ## 参考
 

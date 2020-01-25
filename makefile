@@ -53,6 +53,13 @@ else
 	$(MAKE) TARGET=ReleasePokemons_$(BOX_NUMBER)_boxes APPEND_CC_FLAGS="-DRELEASE_POKEMONS -DBOX_NUMBER=$(BOX_NUMBER)"
 endif
 
+magical-trade:
+ifeq ($(BOX_NUMBER), 1)
+	$(MAKE) TARGET=MagicalTrade_1_box APPEND_CC_FLAGS=-DTRADES
+else
+	$(MAKE) TARGET=MagicalTrade_$(BOX_NUMBER)_boxes APPEND_CC_FLAGS='-DTRADES -DBOX_NUMBER=$(BOX_NUMBER)'
+endif
+
 loop-battle-tower:
 	$(MAKE) TARGET=LoopBattleTower	APPEND_CC_FLAGS=-DLOOP_BATTLE_TOWER
 loop-tournament:
