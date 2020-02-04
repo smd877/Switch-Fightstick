@@ -8,12 +8,17 @@
 #define	MAX_EGG_COUNT		(BOX_NUMBER * 30)
 #define LIMIT_BOX_NUMBER	32
 #define LIMIT_EGG_COUNT		(LIMIT_BOX_NUMBER * 30)
+#ifndef TARGET_NUM
+	#define TARGET_NUM 0
+#endif
 
 extern void HatchEggs_Module(USB_JoystickReport_Input_t* const ReportData);
 extern void LoopTournament_Module(USB_JoystickReport_Input_t* const ReportData);
 extern void RepeatA_Module(USB_JoystickReport_Input_t* const ReportData);
 extern void ReleasePokemons_Module(USB_JoystickReport_Input_t* const ReportData);
 extern void LoopBattleTower_Module(USB_JoystickReport_Input_t* const ReportData);
+extern void OnlyHatchEggs_Module(USB_JoystickReport_Input_t* const ReportData);
 extern void MagicalTrade_Module(USB_JoystickReport_Input_t* const ReportData);
+extern void PokeJob_Module(USB_JoystickReport_Input_t* const ReportData);
 
 #endif

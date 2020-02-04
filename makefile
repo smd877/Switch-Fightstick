@@ -24,6 +24,7 @@ LUFA_PATH    = ./lufa/LUFA
 CC_FLAGS     = -DUSE_LUFA_CONFIG_HEADER -IConfig/ ${APPEND_CC_FLAGS}
 LD_FLAGS     =
 BOX_NUMBER   = 1
+TARGET_NUM   = 0
 
 # Default target
 all:
@@ -53,13 +54,12 @@ else
 	$(MAKE) TARGET=ReleasePokemons_$(BOX_NUMBER)_boxes APPEND_CC_FLAGS="-DRELEASE_POKEMONS -DBOX_NUMBER=$(BOX_NUMBER)"
 endif
 
+only-hatch-eggs:
+	$(MAKE) TARGET=OnlyHatchEggs_$(BOX_NUMBER)_boxes APPEND_CC_FLAGS='-DONLY_HATCH_EGGS -DBOX_NUMBER=$(BOX_NUMBER)'
 magical-trade:
-ifeq ($(BOX_NUMBER), 1)
-	$(MAKE) TARGET=MagicalTrade_1_box APPEND_CC_FLAGS=-DTRADES
-else
 	$(MAKE) TARGET=MagicalTrade_$(BOX_NUMBER)_boxes APPEND_CC_FLAGS='-DTRADES -DBOX_NUMBER=$(BOX_NUMBER)'
-endif
-
+poke-job:
+	$(MAKE) TARGET=PokeJob_$(TARGET_NUM) APPEND_CC_FLAGS='-DPOKE_JOB -DTARGET_NUM=$(TARGET_NUM)'
 loop-battle-tower:
 	$(MAKE) TARGET=LoopBattleTower	APPEND_CC_FLAGS=-DLOOP_BATTLE_TOWER
 loop-tournament:
