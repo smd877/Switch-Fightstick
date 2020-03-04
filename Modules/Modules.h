@@ -11,6 +11,24 @@
 #ifndef TARGET_NUM
 	#define TARGET_NUM 0
 #endif
+#ifndef EFFORT_H
+	#define EFFORT_H 0
+#endif
+#ifndef EFFORT_A
+	#define EFFORT_A 0
+#endif
+#ifndef EFFORT_B
+	#define EFFORT_B 0
+#endif
+#ifndef EFFORT_C
+	#define EFFORT_C 0
+#endif
+#ifndef EFFORT_D
+	#define EFFORT_D 0
+#endif
+#ifndef EFFORT_S
+	#define EFFORT_S 0
+#endif
 
 extern void HatchEggs_Module(USB_JoystickReport_Input_t* const ReportData);
 extern void LoopTournament_Module(USB_JoystickReport_Input_t* const ReportData);
@@ -20,5 +38,6 @@ extern void LoopBattleTower_Module(USB_JoystickReport_Input_t* const ReportData)
 extern void OnlyHatchEggs_Module(USB_JoystickReport_Input_t* const ReportData);
 extern void MagicalTrade_Module(USB_JoystickReport_Input_t* const ReportData);
 extern void PokeJob_Module(USB_JoystickReport_Input_t* const ReportData);
+extern void GiveEffort_Module(USB_JoystickReport_Input_t* const ReportData);
 
 #endif

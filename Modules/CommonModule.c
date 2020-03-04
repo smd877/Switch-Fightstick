@@ -52,6 +52,8 @@ void GetNextReport(USB_JoystickReport_Input_t* const ReportData)
 	MagicalTrade_Module(ReportData);
 #elif defined(POKE_JOB)
 	PokeJob_Module(ReportData);
+#elif defined(GIVE_EFFORT)
+	GiveEffort_Module(ReportData);
 #else
 	HatchEggs_Module(ReportData);
 #endif

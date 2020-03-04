@@ -128,6 +128,33 @@ Forked from [Almtr/Switch-Fightstick](https://github.com/Almtr/Switch-Fightstick
 
 最大25回試行したら止まります。(新時渡りで1日と2分進めて確実にポケジョブを完了にするため。)
 
+
+## 努力値振り分け自動化
+
+### ビルド方法
+
+  以下を実行
+
+  ```sh
+  $ make give-effort EFFORT_H=0 EFFORT_A=0 EFFORT_B=44 EFFORT_C=212 EFFORT_D=0 EFFORT_S=252
+
+  // 0は省略しても大丈夫です↓こんなのもok
+  // $ make give-effort EFFORT_B=44 EFFORT_C=212 EFFORT_S=252
+  ```
+
+### 使い方
+
+※ 新時渡り(レイドバトルによる日付変更ペナルティの回避)を利用した自動化です。利用する場合は自己責任でお願いします。
+
+1. 新時渡りによりペナルティ回避状態にしてください。
+1. 何月でもいいので1日にしてください。
+1. 何時でもいいので0分にしてください。
+1. 設定で「話の速さ」を速いにしてください。
+1. 左上のポケモンボックスに対象ポケモン1匹だけを配置してください。
+1. ロトミの前まで移動してください。
+1. Arduino UNO R3 と Nintendo Switch を接続してください。
+1. H→A→B→C→D→S の順に努力値を振っていきます。(510の範囲チェックとかはやってないので自己責任で)
+
 ## ダウンロード
 
 https://github.com/smd877/Switch-Fightstick/releases からダウンロードしてください。
