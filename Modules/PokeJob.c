@@ -118,7 +118,7 @@ static uint8_t PokeJobSetup(USB_JoystickReport_Input_t* const ReportData, uint16
 	return 0;
 }
 
-static uint8_t Tokiwatari(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
+static uint8_t TokiwatariCustom(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
 {
 	switch (count) {
 	case 0 ... 24:
@@ -304,7 +304,7 @@ void PokeJob_Module(USB_JoystickReport_Input_t* const ReportData)
 		}
 		break;
 	case TOKIWATARI:
-		if (Tokiwatari(ReportData, duration_count)) {
+		if (TokiwatariCustom(ReportData, duration_count)) {
 			state = POKEJOB_FINISH;
 			duration_count = 0;
 		}

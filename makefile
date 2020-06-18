@@ -74,6 +74,10 @@ loop-tournament:
 	$(MAKE) TARGET=LoopTournament	APPEND_CC_FLAGS=-DLOOP_TOURNAMENT
 repeat-a:
 	$(MAKE) TARGET=RepeatA		APPEND_CC_FLAGS=-DREPEAT_A
+tokiwatari-watt:
+	$(MAKE) TARGET=TokiwatariWatt	APPEND_CC_FLAGS=-DTOKIWATARI_WATT
+shake-tree:
+	$(MAKE) TARGET=ShakeTree	APPEND_CC_FLAGS=-DSHAKE_TREE
 
 .PHONY: clean
 clean:

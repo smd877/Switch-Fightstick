@@ -30,6 +30,8 @@
 	#define EFFORT_S 0
 #endif
 
+uint8_t Tokiwatari(USB_JoystickReport_Input_t* const ReportData, uint16_t count);
+
 extern void HatchEggs_Module(USB_JoystickReport_Input_t* const ReportData);
 extern void LoopTournament_Module(USB_JoystickReport_Input_t* const ReportData);
 extern void RepeatA_Module(USB_JoystickReport_Input_t* const ReportData);
@@ -39,5 +41,7 @@ extern void OnlyHatchEggs_Module(USB_JoystickReport_Input_t* const ReportData);
 extern void MagicalTrade_Module(USB_JoystickReport_Input_t* const ReportData);
 extern void PokeJob_Module(USB_JoystickReport_Input_t* const ReportData);
 extern void GiveEffort_Module(USB_JoystickReport_Input_t* const ReportData);
+extern void TokiwatariWatt_Module(USB_JoystickReport_Input_t* const ReportData);
+extern void ShakeTree_Module(USB_JoystickReport_Input_t* const ReportData);
 
 #endif

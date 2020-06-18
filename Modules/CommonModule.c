@@ -54,6 +54,10 @@ void GetNextReport(USB_JoystickReport_Input_t* const ReportData)
 	PokeJob_Module(ReportData);
 #elif defined(GIVE_EFFORT)
 	GiveEffort_Module(ReportData);
+#elif defined(TOKIWATARI_WATT)
+	TokiwatariWatt_Module(ReportData);
+#elif defined(SHAKE_TREE)
+	ShakeTree_Module(ReportData);
 #else
 	HatchEggs_Module(ReportData);
 #endif
