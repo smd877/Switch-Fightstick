@@ -58,6 +58,8 @@ void GetNextReport(USB_JoystickReport_Input_t* const ReportData)
 	TokiwatariWatt_Module(ReportData);
 #elif defined(SHAKE_TREE)
 	ShakeTree_Module(ReportData);
+#elif defined(COLLECT_WING)
+	CollectWing_Module(ReportData);
 #else
 	HatchEggs_Module(ReportData);
 #endif

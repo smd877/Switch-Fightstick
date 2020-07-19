@@ -78,6 +78,8 @@ tokiwatari-watt:
 	$(MAKE) TARGET=TokiwatariWatt	APPEND_CC_FLAGS=-DTOKIWATARI_WATT
 shake-tree:
 	$(MAKE) TARGET=ShakeTree	APPEND_CC_FLAGS=-DSHAKE_TREE
+collect-wing:
+	$(MAKE) TARGET=CollectWing	APPEND_CC_FLAGS=-DCOLLECT_WING
 
 .PHONY: clean
 clean:

@@ -4,103 +4,103 @@
 uint8_t Tokiwatari(USB_JoystickReport_Input_t* const ReportData, uint16_t count)
 {
 	switch (count) {
-	case 0 ... 24:
+	case 0 ... 9:
 		/* Push HOME */
 		ReportData->Button |= SWITCH_HOME;
 		break;
-	case 100 ... 124:
+	case 70 ... 79:
 		/* Move bottom */
 		ReportData->HAT = HAT_BOTTOM;
 		break;
-	case 125 ... 224:
+	case 80 ... 159:
 		/* Move right */
 		ReportData->HAT = HAT_RIGHT;
 		break;
-	case 225 ... 249:
+	case 160 ... 169:
 		/* Move left */
 		ReportData->HAT = HAT_LEFT;
 		break;
-	case 250 ... 274:
+	case 170 ... 179:
 		/* Push A */
 		ReportData->Button |= SWITCH_A;
 		break;
-	case 325 ... 574:
+	case 200 ... 439:
 		/* Move bottom */
 		ReportData->HAT = HAT_BOTTOM;
 		break;
-	case 575 ... 599:
+	case 440 ... 449:
 		/* Push A */
 		ReportData->Button |= SWITCH_A;
 		break;
-	case 625 ... 634:
+	case 455 ... 464:
 		/* Move bottom */
 		ReportData->HAT = HAT_BOTTOM;
 		break;
-	case 645 ... 654:
+	case 470 ... 479:
 		/* Move bottom */
 		ReportData->HAT = HAT_BOTTOM;
 		break;
-	case 665 ... 674:
+	case 485 ... 494:
 		/* Move bottom */
 		ReportData->HAT = HAT_BOTTOM;
 		break;
-	case 685 ... 694:
+	case 500 ... 509:
 		/* Move bottom */
 		ReportData->HAT = HAT_BOTTOM;
 		break;
-	case 705 ... 714:
+	case 515 ... 524:
 		/* Push A */
 		ReportData->Button |= SWITCH_A;
 		break;
-	case 805 ... 814:
+	case 545 ... 554:
 		/* Move bottom */
 		ReportData->HAT = HAT_BOTTOM;
 		break;
-	case 825 ... 834:
+	case 560 ... 569:
 		/* Move bottom */
 		ReportData->HAT = HAT_BOTTOM;
 		break;
-	case 845 ... 854:
+	case 575 ... 584:
 		/* Push A */
 		ReportData->Button |= SWITCH_A;
 		break;
-	case 945 ... 954:
+	case 605 ... 614:
 		/* Move right */
 		ReportData->HAT = HAT_RIGHT;
 		break;
-	case 965 ... 974:
+	case 620 ... 629:
 		/* Move right */
 		ReportData->HAT = HAT_RIGHT;
 		break;
-	case 985 ... 994:
+	case 635 ... 644:
 		/* Move top */
 		ReportData->HAT = HAT_TOP;
 		break;
-	case 1005 ... 1014:
+	case 650 ... 659:
 		/* Move right */
 		ReportData->HAT = HAT_RIGHT;
 		break;
-	case 1025 ... 1034:
+	case 665 ... 674:
 		/* Move right */
 		ReportData->HAT = HAT_RIGHT;
 		break;
-	case 1045 ... 1054:
+	case 680 ... 689:
 		/* Move right */
 		ReportData->HAT = HAT_RIGHT;
 		break;
-	case 1065 ... 1074:
+	case 695 ... 704:
 		/* Push A */
 		ReportData->Button |= SWITCH_A;
 		break;
-	case 1115 ... 1124:
+	case 745 ... 754:
 		/* Push HOME */
 		ReportData->Button |= SWITCH_HOME;
 		break;
-	case 1225 ... 1234:
+	case 855 ... 864:
 		/* Push HOME */
 		ReportData->Button |= SWITCH_HOME;
 		break;
-	case 1385:
+	case 1000:
 		return 1;
 	}
 	return 0;
