@@ -60,6 +60,10 @@ void GetNextReport(USB_JoystickReport_Input_t* const ReportData)
 	ShakeTree_Module(ReportData);
 #elif defined(COLLECT_WING)
 	CollectWing_Module(ReportData);
+#elif defined(RAID_1TURN_HOST)
+	Raid1TurnHost_Module(ReportData);
+#elif defined(RAID_1TURN_GUEST)
+	Raid1TurnGuest_Module(ReportData);
 #else
 	HatchEggs_Module(ReportData);
 #endif

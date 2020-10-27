@@ -44,5 +44,7 @@ extern void GiveEffort_Module(USB_JoystickReport_Input_t* const ReportData);
 extern void TokiwatariWatt_Module(USB_JoystickReport_Input_t* const ReportData);
 extern void ShakeTree_Module(USB_JoystickReport_Input_t* const ReportData);
 extern void CollectWing_Module(USB_JoystickReport_Input_t* const ReportData);
+extern void Raid1TurnHost_Module(USB_JoystickReport_Input_t* const ReportData);
+extern void Raid1TurnGuest_Module(USB_JoystickReport_Input_t* const ReportData);
 
 #endif

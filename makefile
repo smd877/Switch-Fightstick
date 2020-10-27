@@ -80,6 +80,10 @@ shake-tree:
 	$(MAKE) TARGET=ShakeTree	APPEND_CC_FLAGS=-DSHAKE_TREE
 collect-wing:
 	$(MAKE) TARGET=CollectWing	APPEND_CC_FLAGS=-DCOLLECT_WING
+raid-1turn-host:
+	$(MAKE) TARGET=Raid1TurnHost	APPEND_CC_FLAGS=-DRAID_1TURN_HOST
+raid-1turn-guest:
+	$(MAKE) TARGET=Raid1TurnGuest	APPEND_CC_FLAGS=-DRAID_1TURN_GUEST
 
 .PHONY: clean
 clean:
